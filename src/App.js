@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import './App.css';
 import GlassSurface from './GlassSurface/GlassSurface';
+import Particles from './Particles/Particles'; // Import the Particles component
 
 function App() {
   const scrollRef = useRef(null);
@@ -96,11 +97,32 @@ function App() {
     <>
       <style>{animationStyles}</style>
 
+      {/* Particles Background */}
+      <div style={{ 
+        position: 'fixed', 
+        top: 0, 
+        left: 0, 
+        width: '100%', 
+        height: '100%', 
+        zIndex: -1 
+      }}>
+        <Particles
+          particleColors={['#ffffff', '#ffffff']}
+          particleCount={200}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover={true}
+          alphaParticles={false}
+          disableRotation={false}
+        />
+      </div>
+
       <div
         ref={scrollRef}
         className="scroll-wrapper"
         style={{
-          backgroundColor: 'black',
+          backgroundColor: 'rgba(0, 0, 0, 0.6)', // Semi-transparent black
           color: 'white',
           height: '100vh',
           overflowY: 'scroll',
